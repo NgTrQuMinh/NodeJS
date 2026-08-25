@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .errorInput {
+            border: 1px solid red;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hóa Đơn</h1>
+    <form id="Form">
+        <label for="">Khách Hàng</label>
+        <input type="text" name="khachhang" id="khachhang">
+        <span class="error error_khachhang"></span>
+        <br><br>
+
+        <label for="loaihang">Loại Hàng</label>
+        <select name="loaihang" id="loaihang">
+            <option value="0">--Chon--</option>
+            <option value="500">Giá 1</option>
+            <option value="100">Giá 2</option>
+        </select>
+        <input type="text" name="dongia" id="dongia" disabled="">
+        <span class="error error_dongia"></span>
+        <br><br>
+        <label for="cnt">Số Lượng</label>
+        <input type="number" name="cnt" id="cnt" value="1" min="0">
+        <br><br>
+        <label for="thanhtien">Thanh Tiền</label>
+        <input type="text" name="thanhtien" id="thanhtien" disabled="">
+        <br><br>
+
+        <label for="noinhanhang">Nơi Nhận Hàng</label>
+        <br><br>
+        <input type="radio" name="noinhanhang" id="noithanh" value="0">
+        <label for="noithanh">Nội Thành</label>
+        <input type="radio" name="noinhanhang" id="ngoaithanh" value="30000">
+        <label for="ngoaithanh">Ngoại Thành</label>
+        <br><br>
+        <label for="phivanchuyen">Phí Vận Chuyển</label>
+        <input type="text" name="phivanchuyen" id="phivanchuyen" disabled="">
+        <span class="error error_phivanchuyen"></span>
+        <br><br>
+        <button type="submit">Đặt Mua</button>
+    </form>
+
+    <script>
+        const khachhang = document.querySelector('#khachhang');
+        const loaihang = document.querySelector('#loaihang');
+        const dongia = document.querySelector('#dongia');
+        const cnt = document.querySelector('#cnt');
+        const thanhtien = document.querySelector('#thanhtien');
+
+        loaihang.addEventListener('input', () => {
+            dongia.value = loaihang.value;
+            thanhtien.value = dongia.value * cnt.value;
+        });
+
+        // reaset lai
+        cnt.addEventListener('input', () => {
+            thanhtien.value = dongia.value * cnt.value;
+        })
+
+        const noithanh = document.querySelector('#noithanh');
+        const ngoaithanh = document.querySelector('#ngoaithanh');
+        const phivanchuyen = document.querySelector('#phivanchuyen');
+        noithanh.addEventListener('click', () => {
+            phivanchuyen.value = noithanh.value;
+        })
+        ngoaithanh.addEventListener('click', () => {
+            phivanchuyen.value = ngoaithanh.value;
+        })
+
+        const Form = document.querySelector('#Form');
+        Form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(Form);
+            const data = Object.fromEntries(formData.entries());
+
+            const khachhang = document.querySelector("#khachhang");
+            const error_khachhang = document.querySelector(".error_khachhang");
+            const error_dongia = document.querySelector(".error_dongia");
+            const error_phivanchuyen = document.querySelector(".error_phivanchuyen");
+
+            error_khachhang.textContent = "";
+            error_dongia.textContent = "";
+            error_phivanchuyen.textContent = "";
+
+            let check = true;
+            if (data.khachhang === '') {
+                khachhang.classList.add("errorInput");
+                error_khachhang.textContent = "Vui lòng nhập dữ liệu";
+                check = false;
+            }
+            else {
+                khachhang.classList.remove("errorInput");
+            }
+
+            if (data.loaihang === "0") {
+                loaihang.classList.add("errorInput");
+                error_dongia.textContent = "Vui lòng chọn loại hàng";
+                check = false;
+            } else {
+                loaihang.classList.remove("errorInput");
+            }
+
+            if (!noithanh.checked && !ngoaithanh.checked) {
+                phivanchuyen.classList.add("errorInput");
+                error_phivanchuyen.textContent = "Vui lòng chọn nơi nhận hàng";
+                check = false;
+            } else {
+                phivanchuyen.classList.remove("errorInput");
+            }
+
+            if (check) {
+                alert('ĐẶT MUA THÀNH CÔNG');
+                Form.reset();
+            }
+        })
+    </script>
+</body>
+
+</html>
