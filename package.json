@@ -1,0 +1,28 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "NgTrQuMinh FullStack BackEnd Zero",
+  "keywords": [
+    "nodeJS",
+    "reactJS"
+  ],
+  "homepage": "https://github.com/NgTrQuMinh/NodeJS#readme",
+  "bugs": {
+    "url": "https://github.com/NgTrQuMinh/NodeJS/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NgTrQuMinh/NodeJS.git"
+  },
+  "license": "ISC",
+  "author": "NgTrQuMinh",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
