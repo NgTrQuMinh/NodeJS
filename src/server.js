@@ -19,6 +19,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 /**
+ * CẤU HÌNH STATIC FILES
+ */
+app.use(express.static(path.join(__dirname, 'public')));
+
+/**
  * KHAI BÁO CÁC ROUTER (ĐỊNH TUYẾN)
  */
 app.get('/', (req, res) => {
