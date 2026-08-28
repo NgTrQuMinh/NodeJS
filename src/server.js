@@ -1,9 +1,16 @@
 // import express from 'express'; // es modules
 const express = require('express'); // commenJS
-const path = require('path');
+const path = require('path'); 
+
+require('dotenv').config(); // npm install dotenv --save
+// or import 'dotenv/config' // for esm
 
 const app = express(); // khởi tạo express = app -> quản lý toàn bộ server.
-const port = 3000;  // cổng
+const port = process.env.PORT || 8888;  // cổng => hardcode . uat .prod
+const hostname  = process.env.HOST_NAME; 
+
+console.log(`Hello ${process.env.HOST_NAME}`)
+
 
 /**
  * CẤU HÌNH TEMPLATE ENGINE (EJS)
@@ -29,6 +36,6 @@ app.get('/ejs', (req, res) => {
  * KHỞI ĐỘNG SERVER
  */
 // Ra lệnh cho server bắt đầu "lắng nghe" các yêu cầu gửi đến cổng 3000
-app.listen(port, () => {
+app.listen(port, hostname, () => {
     console.log(`Ứng dụng được chạy trên cổng ${port}`);
 })
