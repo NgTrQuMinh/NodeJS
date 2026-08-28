@@ -9,8 +9,7 @@ const app = express(); // khởi tạo express = app -> quản lý toàn bộ se
 const port = process.env.PORT || 8888;  // cổng => hardcode . uat .prod
 const hostname  = process.env.HOST_NAME; 
 
-console.log(`Hello ${process.env.HOST_NAME}`)
-
+// npm install --save-dev nodemon => để cài đặt thư viện tự động khởi động lại ứng dụng Node
 
 /**
  * CẤU HÌNH TEMPLATE ENGINE (EJS)
@@ -26,7 +25,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 })
 app.get('/ngtrquminh', (req, res) => {
-    res.send('Hello ngtrquminh!');
+    res.send('Hello NgTrQuMinh!');
 })
 app.get('/ejs', (req, res) => {
     res.render('sample.ejs');
