@@ -8,13 +8,14 @@ require('dotenv').config(); // npm install dotenv --save
 
 const app = express(); // khởi tạo express = app -> quản lý toàn bộ server.
 const port = process.env.PORT || 8888;  // cổng => hardcode . uat .prod
-const hostname  = process.env.HOST_NAME; 
+const hostname = process.env.HOST_NAME;
 
 // Config
-configViewEngine(app); 
+configViewEngine(app);
 
 // Router
-app.use('/' , webRouter);
+app.use('/', webRouter);
+
 
 /**
  * KHỞI ĐỘNG SERVER
