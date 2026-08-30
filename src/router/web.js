@@ -1,5 +1,5 @@
 const express = require('express');
-const { getHomePage, getNgTrQuMinh } = require('../controller/homeController');
+const { getHomePage, getNgTrQuMinh, postCreateUser } = require('../controller/homeController');
 const router = express.Router();
 
 /**
@@ -8,5 +8,8 @@ const router = express.Router();
  */
 router.get('/', getHomePage)
 router.get('/ngtrquminh', getNgTrQuMinh)
+
+router.post('/create-user', postCreateUser); // file xử lý
+
 
 module.exports = router; // export default
