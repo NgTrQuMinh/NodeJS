@@ -16,6 +16,28 @@
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
     </div>
+
+    <div class="form-add-new">
+        <form action="/create-user" method="post">
+            <fieldset>
+                <legend>Form Add New User</legend>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email"> <!-- Đã bỏ <br> -->
+                </div>
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="input-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city">
+                </div>
+                <input type="submit" value="Submit">
+            </fieldset>
+        </form>
+    </div>
+
 </body>
 
 </html>
