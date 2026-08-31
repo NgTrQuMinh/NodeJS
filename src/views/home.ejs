@@ -11,33 +11,72 @@
 
 <body>
     <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a class="active" href="/">Home</a>
+        <a href="/create">Create Users</a>
+        <a href="/">Contact</a>
+        <a href="/">About</a>
     </div>
 
-    <div class="form-add-new">
-        <!-- lấy dữ liệu từ form sang file create-user -->
-        <form action="/create-user" method="post"> 
-            <fieldset>
-                <legend>Form Add New User</legend>
-                <div class="input-group">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email"> <!-- Đã bỏ <br> -->
-                </div>
-                <div class="input-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name">
-                </div>
-                <div class="input-group">
-                    <label for="city">City:</label>
-                    <input type="text" id="city" name="city">
-                </div>
-                <input type="submit" value="Submit">
-            </fieldset>
-        </form>
+    <div class="table-container">
+        <!-- Thanh công cụ phía trên -->
+        <div class="table-header">
+            <h2>Danh Sách Khách Hàng</h2>
+            <button class="btn btn-create">
+                <i class="fas fa-plus"></i> <a href="/create">Thêm mới</a>
+            </button>
+        </div>
+
+        <!-- Bảng dữ liệu CRUD (Email, Name, City) -->
+        <table class="crud-table">
+            <thead>
+                <tr>
+                    <th>Họ và Tên</th>
+                    <th>Email</th>
+                    <th>Thành phố</th>
+                    <th class="text-center">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Nguyễn Văn A</strong></td>
+                    <td>vana@gmail.com</td>
+                    <td>Hà Nội</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-action btn-edit" title="Sửa"><i class="fas fa-edit"></i> Sửa</button>
+                            <button class="btn-action btn-delete" title="Xóa"><i class="fas fa-trash"></i> Xóa</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Trần Thị B</strong></td>
+                    <td>thib@gmail.com</td>
+                    <td>TP. Hồ Chí Minh</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-action btn-edit" title="Sửa"><i class="fas fa-edit"></i> Sửa</button>
+                            <button class="btn-action btn-delete" title="Xóa"><i class="fas fa-trash"></i> Xóa</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Lê Văn C</strong></td>
+                    <td>vanc@gmail.com</td>
+                    <td>Đà Nẵng</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-action btn-edit" title="Sửa"><i class="fas fa-edit"></i> Sửa</button>
+                            <button class="btn-action btn-delete" title="Xóa"><i class="fas fa-trash"></i> Xóa</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+
+    <!-- Nhúng thư viện FontAwesome để hiển thị icon (Copy bỏ vào thẻ <head>) -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+
 
 </body>
 

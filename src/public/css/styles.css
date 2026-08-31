@@ -106,3 +106,131 @@
 .form-add-new input[type="submit"]:hover {
     background-color: #2563eb;
 }
+
+
+
+/* TALBE CRUD */
+/* Khung chứa bảng tổng thể */
+.table-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tiêu đề & Nút Thêm mới */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-header h2 {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 22px;
+}
+
+/* Định dạng nút bấm chung */
+.btn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-create {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.btn-create:hover {
+    background-color: #27ae60;
+}
+
+/* Cấu trúc bảng */
+.crud-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.crud-table th,
+.crud-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #ebedf0;
+}
+
+/* Định dạng tiêu đề cột */
+.crud-table th {
+    background-color: #f8f9fa;
+    color: #5a6a85;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Hiệu ứng di chuột qua các dòng dữ liệu */
+.crud-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Cột hành động (Căn giữa để nhìn cân đối) */
+.text-center {
+    text-align: center;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Nút Sửa / Xóa nhỏ trong bảng */
+.btn-action {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Style cho nút Sửa */
+.btn-edit {
+    color: #3498db;
+    /* Đổi sang màu xanh dương cho hiện đại */
+    border-color: #3498db;
+}
+
+.btn-edit:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+/* Style cho nút Xóa */
+.btn-delete {
+    color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.btn-delete:hover {
+    background-color: #e74c3c;
+    color: #fff;
+}

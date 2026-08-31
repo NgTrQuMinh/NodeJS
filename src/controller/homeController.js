@@ -10,7 +10,11 @@ const getNgTrQuMinh = (req, res) => {
     res.render('sample.ejs');
 }
 
-const postCreateUser = (req, res) => {
+const getCreatePage = (req, res) => {
+    return res.render('create.ejs');
+}
+
+const postCreateUser = async (req, res) => {
     // let email = req.body.email;
     // let name = req.body.name;
     // let city = req.body.city;
@@ -21,23 +25,14 @@ const postCreateUser = (req, res) => {
     }
     console.log(`>>> Email : ${email} || Name : ${name} || City : ${city}`);
 
-    connection.query(
-        'INSERT INTO Users (email, name, city) VALUES (?, ?, ?)', // (?) làm biến giữ chỗ để bảo mật
-        [email, name, city], // Mảng chứa các giá trị sẽ được nạp vào các dấu (?) theo đúng thứ tự
-        // Hàm callback xử lý kết quả
-        function (err, results, fields) {
-            if (err) {
-                console.log("Lỗi chèn dữ liệu: ", err);
-                return res.status(500).send('Có lỗi xảy ra khi tạo user');
-            }
-            res.send('Create a New User Successfully');
-            // res.redirect('/users'); // (Redirect) Tự động chuyển hướng
-        }
-    );
+    // Thay đổi từ CallBack -> ES7 Async Await
+    const [results, fields] = await connection.query('INSERT INTO Users (email, name, city) VALUES (?, ?, ?)', [email, name, city],);
+    console.log('>>> Check Result: ', results);
+    res.redirect('/'); // (Redirect) Tự động chuyển hướng
 }
 
 
 // Giống với require của PHP - Nhưng phải chủ động cấu hình (khai báo)
 module.exports = {
-    getHomePage, getNgTrQuMinh, postCreateUser
+    getHomePage, getNgTrQuMinh, getCreatePage, postCreateUser
 }

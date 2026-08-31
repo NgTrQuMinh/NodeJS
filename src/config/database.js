@@ -1,4 +1,4 @@
-const mysql = require('mysql2'); // Nhập thư viện mysql2 vào dự án
+const mysql = require('mysql2/promise'); // Tiêu diệt "Callback Hell" -> Kết hợp Async/Await
 require('dotenv').config(); // npm install dotenv --save
 
 // npm install --save mysql2 -> Cài đặt Npm Mysql2
