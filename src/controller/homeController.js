@@ -1,9 +1,15 @@
 const connection = require('../config/database');
+const { getAllUser } = require('../service/CRUDservice');
 
-const getHomePage = (req, res) => {
+
+const getHomePage = async (req, res) => {
     // Process Data
     // Call Model
-    return res.render('home.ejs');
+    let results = await getAllUser();
+    console.log('>>> Check Result: ', results);
+    return res.render('home.ejs', {
+        listUsers: results // listUsers <- results
+    });
 }
 
 const getNgTrQuMinh = (req, res) => {
