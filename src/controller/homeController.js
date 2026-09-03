@@ -6,7 +6,7 @@ const getHomePage = async (req, res) => {
     // Process Data
     // Call Model
     let results = await getAllUser();
-    console.log('>>> Check Result: ', results);
+    // console.log('>>> Check Result: ', results);
     return res.render('home.ejs', {
         listUsers: results // listUsers <- results
     });

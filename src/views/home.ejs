@@ -18,7 +18,7 @@
     </div>
 
     <div class="table-container">
-        <%= JSON.stringify(listUsers) %> 
+        <!-- <%= JSON.stringify(listUsers) %>  -->
         <!-- Thanh công cụ phía trên -->
         <div class="table-header">
             <h2>Danh Sách Khách Hàng</h2>
@@ -38,40 +38,54 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><strong>Nguyễn Văn A</strong></td>
-                    <td>vana@gmail.com</td>
-                    <td>Hà Nội</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="btn-action btn-edit" title="Sửa"><i class="fas fa-edit"></i> Sửa</button>
-                            <button class="btn-action btn-delete" title="Xóa"><i class="fas fa-trash"></i> Xóa</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Trần Thị B</strong></td>
-                    <td>thib@gmail.com</td>
-                    <td>TP. Hồ Chí Minh</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="btn-action btn-edit" title="Sửa"><i class="fas fa-edit"></i> Sửa</button>
-                            <button class="btn-action btn-delete" title="Xóa"><i class="fas fa-trash"></i> Xóa</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Lê Văn C</strong></td>
-                    <td>vanc@gmail.com</td>
-                    <td>Đà Nẵng</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="btn-action btn-edit" title="Sửa"><i class="fas fa-edit"></i> Sửa</button>
-                            <button class="btn-action btn-delete" title="Xóa"><i class="fas fa-trash"></i> Xóa</button>
-                        </div>
-                    </td>
-                </tr>
+                <!-- Sử dụng vòng lặp for...each của JavaScript -->
+                <% listUsers.forEach(function(item, index) { %>
+                    <tr>
+                        <td><strong>
+                                <%= item.name %>
+                            </strong></td>
+                        <td>
+                            <%= item.email %>
+                        </td>
+                        <td>
+                            <%= item.city %>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-action btn-edit" title="Sửa"><i class="fas fa-edit"></i> Sửa</button>
+                                <button class="btn-action btn-delete" title="Xóa"><i class="fas fa-trash"></i>
+                                    Xóa</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <% }); %>
+                        <!-- Sử dụng vòng lặp for...of của JavaScript -->
+                        <!-- <% for (let item of listUsers) { %>
+                            <tr>
+                                <td><strong>
+                                        <%= item.name %>
+                                    </strong></td>
+                                <td>
+                                    <%= item.email %>
+                                </td>
+                                <td>
+                                    <%= item.city %>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-edit" title="Sửa" data-id="<%= item.id %>">
+                                            <i class="fas fa-edit"></i> Sửa
+                                        </button>
+                                        <button class="btn-action btn-delete" title="Xóa" data-id="<%= item.id %>">
+                                            <i class="fas fa-trash"></i> Xóa
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% } %> -->
             </tbody>
+
+
         </table>
     </div>
 
