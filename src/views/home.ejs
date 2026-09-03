@@ -56,10 +56,12 @@
                                 <a href="/edit/<%= item.id %>" class="btn-action btn-edit" title="Sửa">
                                     <i class="fas fa-edit"></i> Sửa
                                 </a>
-                                <a href="/delete/<%= item.id %>" class="btn-action btn-delete" title="Xóa"
-                                    onclick="return confirm('Bạn có chắc muốn xóa người dùng này?');">
-                                    <i class="fas fa-trash"></i> Xóa
-                                </a>
+                                <form action="/delete/<%= item.id %>" method="POST" style="display: inline;"
+                                    onsubmit="return confirm('Bạn có chắc muốn xóa người dùng này?');">
+                                    <button type="submit" class="btn-action btn-delete" title="Xóa">
+                                        <i class="fas fa-trash"></i> Xóa
+                                    </button>
+                                </form>
                             </div>
                         </td>
                     </tr>

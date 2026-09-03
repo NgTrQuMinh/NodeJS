@@ -1,5 +1,5 @@
 const connection = require('../config/database');
-const { getAllUser, getUser, updateUserById, createNewUser } = require('../service/CRUDservice');
+const { getAllUser, getUser, updateUserById, createNewUser, deleteUser } = require('../service/CRUDservice');
 
 // HomePage -> SELECT * FROM User
 const getHomePage = async (req, res) => {
@@ -58,7 +58,13 @@ const postEditUser = async (req, res) => {
     return res.redirect('/'); // Sửa xong quay về trang chủ
 }
 
-
+const postDeleteUser = async (req, res) => {
+    const userID = req.params.id; 
+    // console.log(">>>> check userID nhận được:", userID);
+    // console.log("Dữ liệu trên URL Params:", req.params);
+    const user = await deleteUser(userID);
+    return res.redirect('/'); 
+}
 
 
 
@@ -77,4 +83,18 @@ module.exports = {
     // EditPage - UpdatePage
     getEditPage,
     postEditUser,
+
+    // DeletePage
+    postDeleteUser
 }
+
+/* 
+*** Trong Node.js (Express), req.body và req.params được phân biệt ngắn gọn như sau:req.body (Dữ liệu ẩn): 
+Chứa dữ liệu gửi ngầm trong thân (body) của request.
+- Ví dụ: Gửi chuỗi JSON { "username": "admin", "pass": "123" } lên server.
+
+*** req.params (Dữ liệu trên URL): Chứa các biến động nằm trực tiếp trên đường dẫn URL, khai báo bằng dấu hai chấm :. 
+Thường dùng để định danh một đối tượng cụ thể (GET, DELETE).
+
+- Ví dụ: Với URL /users/5, nếu route là /users/:id thì req.params.id sẽ bằng 5.
+*/

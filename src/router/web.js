@@ -1,5 +1,5 @@
 const express = require('express');
-const { getHomePage, getCreatePage, postCreateUser, getEditPage, postEditUser, getReadPage } = require('../controller/homeController');
+const { getHomePage, getCreatePage, postCreateUser, getEditPage, postEditUser, getReadPage, postDeleteUser } = require('../controller/homeController');
 const router = express.Router();
 
 /**
@@ -15,6 +15,8 @@ router.get('/edit/:id', getEditPage);
 router.post('/update-user', postEditUser); // file xử lý EditUser
 
 router.get('/read/:id', getReadPage);
+
+router.post('/delete/:id', postDeleteUser); // file xử lý DeleteUser
 
 
 
