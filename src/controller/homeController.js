@@ -1,7 +1,7 @@
 const connection = require('../config/database');
-const { getAllUser, getUser, updateUserById } = require('../service/CRUDservice');
+const { getAllUser, getUser, updateUserById, createNewUser } = require('../service/CRUDservice');
 
-
+// HomePage -> SELECT * FROM User
 const getHomePage = async (req, res) => {
     // Process Data
     // Call Model
@@ -16,6 +16,7 @@ const getCreatePage = (req, res) => {
     return res.render('create.ejs');
 }
 
+// CREATE -> CRUD
 const postCreateUser = async (req, res) => {
     // let email = req.body.email;
     // let name = req.body.name;
@@ -27,12 +28,21 @@ const postCreateUser = async (req, res) => {
     }
     console.log(`>>> Email : ${email} || Name : ${name} || City : ${city}`);
 
-    // Thay đổi từ CallBack -> ES7 Async Await
-    const [results, fields] = await connection.query('INSERT INTO Users (email, name, city) VALUES (?, ?, ?)', [email, name, city],);
-    console.log('>>> Check Result: ', results);
-    res.redirect('/'); // (Redirect) Tự động chuyển hướng
+    await createNewUser(email, name, city);
+    return res.redirect('/');
 }
 
+// READ -> CRUD
+const getReadPage = async (req, res) => {
+    const userId = req.params.id;
+    const user = await getUser(userId);
+    if (!user) {
+        return res.status(404).send('Không tìm thấy người dùng!');
+    }
+    return res.render('read.ejs', { user: user }); // Render form, đổ dữ liệu user vào 
+}
+
+// Edit Update -> CRUD
 const getEditPage = async (req, res) => {
     const userId = req.params.id;       // Lấy id từ URL, VD: /edit/5 -> id = 5
     const user = await getUser(userId); // Gọi Service lấy thông tin user theo id
@@ -50,11 +60,21 @@ const postEditUser = async (req, res) => {
 
 
 
+
+
 // Giống với require của PHP - Nhưng phải chủ động cấu hình (khai báo)
 module.exports = {
+    // HomePage
     getHomePage,
+
+    // CreatePage
     getCreatePage,
     postCreateUser,
+
+    // ReadPage
+    getReadPage,
+
+    // EditPage - UpdatePage
     getEditPage,
-    postEditUser
+    postEditUser,
 }

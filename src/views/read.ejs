@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Khách Hàng</title>
+    <link rel="stylesheet" href="/css/reaset.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/create">Create Users</a>
+        <a class="active" href="/read">Read User</a>
+    </div>
+
+    <div class="detail-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="avatar-circle">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-title">
+                <h2>
+                    <%= user.name %>
+                </h2>
+                <span class="user-badge"><i class="fas fa-id-badge"></i> ID: <%= user.id %></span>
+            </div>
+        </div>
+
+        <!-- Detail Content -->
+        <div class="detail-grid">
+            <div class="detail-card">
+                <div class="card-icon"><i class="fas fa-hashtag"></i></div>
+                <div class="card-info">
+                    <span class="info-label">Mã định danh (ID)</span>
+                    <span class="info-value">
+                        <%= user.id %>
+                    </span>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="card-icon"><i class="fas fa-user-tag"></i></div>
+                <div class="card-info">
+                    <span class="info-label">Họ và Tên</span>
+                    <span class="info-value font-semibold">
+                        <%= user.name %>
+                    </span>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="card-icon"><i class="fas fa-envelope"></i></div>
+                <div class="card-info">
+                    <span class="info-label">Địa chỉ Email</span>
+                    <span class="info-value">
+                        <%= user.email %>
+                    </span>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="card-icon"><i class="fas fa-location-dot"></i></div>
+                <div class="card-info">
+                    <span class="info-label">Thành phố</span>
+                    <span class="info-value">
+                        <%= user.city %>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="card-actions">
+            <a href="/" class="btn-modern btn-secondary">
+                <i class="fas fa-arrow-left"></i> Quay lại
+            </a>
+            <div class="action-right">
+                <a href="/edit/<%= user.id %>" class="btn-modern btn-warning">
+                    <i class="fas fa-pen"></i> Chỉnh sửa
+                </a>
+                <a href="/delete/<%= user.id %>" class="btn-modern btn-danger"
+                    onclick="return confirm('Bạn có chắc muốn xóa người dùng này?');">
+                    <i class="fas fa-trash-can"></i> Xóa
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
