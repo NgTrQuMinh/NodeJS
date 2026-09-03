@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New User</title>
+    <title>Edit User</title>
     <link rel="stylesheet" href="/css/reaset.css">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -12,27 +12,33 @@
 <body>
     <div class="topnav">
         <a href="/">Home</a>
-        <a class="active" href="/create">Create Users</a>
+        <a class="active" href="/edit">Edits Users</a>
     </div>
 
     <div class="form-add-new">
-        <!-- lấy dữ liệu từ form sang file create-user -->
-        <form action="/create-user" method="post"> 
+        <form action="/update-user" method="post">
             <fieldset>
-                <legend>Form Add New User</legend>
+                <legend>Form Edit User</legend>
+
+                <!-- Field ẩn lưu trữ ID người dùng -->
+                <input type="hidden" name="id" value="<%= user.id %>">
+
                 <div class="input-group">
                     <label for="email">Email:</label>
-                    <input type="text" id="email" name="email"> <!-- Đã bỏ <br> -->
+                    <input type="text" id="email" name="email" value="<%= user.email %>">
                 </div>
+
                 <div class="input-group">
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name">
+                    <input type="text" id="name" name="name" value="<%= user.name %>">
                 </div>
+
                 <div class="input-group">
                     <label for="city">City:</label>
-                    <input type="text" id="city" name="city">
+                    <input type="text" id="city" name="city" value="<%= user.city %>">
                 </div>
-                <input type="submit" value="Submit">
+
+                <input type="submit" value="Save Changes">
             </fieldset>
         </form>
     </div>

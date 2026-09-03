@@ -13,8 +13,6 @@
     <div class="topnav">
         <a class="active" href="/">Home</a>
         <a href="/create">Create Users</a>
-        <a href="/">Contact</a>
-        <a href="/">About</a>
     </div>
 
     <div class="table-container">
@@ -52,9 +50,13 @@
                         </td>
                         <td>
                             <div class="action-buttons">
-                                <button class="btn-action btn-edit" title="Sửa"><i class="fas fa-edit"></i> Sửa</button>
-                                <button class="btn-action btn-delete" title="Xóa"><i class="fas fa-trash"></i>
-                                    Xóa</button>
+                                <a href="/edit/<%= item.id %>" class="btn-action btn-edit" title="Sửa">
+                                    <i class="fas fa-edit"></i> Sửa
+                                </a>
+                                <a href="/delete/<%= item.id %>" class="btn-action btn-delete" title="Xóa"
+                                    onclick="return confirm('Bạn có chắc muốn xóa người dùng này?');">
+                                    <i class="fas fa-trash"></i> Xóa
+                                </a>
                             </div>
                         </td>
                     </tr>
@@ -89,8 +91,7 @@
         </table>
     </div>
 
-    <!-- Nhúng thư viện FontAwesome để hiển thị icon (Copy bỏ vào thẻ <head>) -->
-    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 
 </body>

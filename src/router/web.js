@@ -1,5 +1,5 @@
 const express = require('express');
-const { getHomePage, getNgTrQuMinh, getCreatePage, postCreateUser } = require('../controller/homeController');
+const { getHomePage, getCreatePage, postCreateUser, getEditPage, postEditUser } = require('../controller/homeController');
 const router = express.Router();
 
 /**
@@ -7,10 +7,13 @@ const router = express.Router();
  * router.Method('/router', handler)
  */
 router.get('/', getHomePage);
-router.get('/ngtrquminh', getNgTrQuMinh);
-router.get('/create', getCreatePage);
 
-router.post('/create-user', postCreateUser); // file xử lý
+router.get('/create', getCreatePage);
+router.post('/create-user', postCreateUser); // file xử lý CreateUser
+
+router.get('/edit/:id', getEditPage);
+router.post('/update-user', postEditUser); // file xử lý EditUser
+
 
 
 module.exports = router; // export default

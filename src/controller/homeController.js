@@ -1,5 +1,5 @@
 const connection = require('../config/database');
-const { getAllUser } = require('../service/CRUDservice');
+const { getAllUser, getUser, updateUserById } = require('../service/CRUDservice');
 
 
 const getHomePage = async (req, res) => {
@@ -10,10 +10,6 @@ const getHomePage = async (req, res) => {
     return res.render('home.ejs', {
         listUsers: results // listUsers <- results
     });
-}
-
-const getNgTrQuMinh = (req, res) => {
-    res.render('sample.ejs');
 }
 
 const getCreatePage = (req, res) => {
@@ -37,8 +33,28 @@ const postCreateUser = async (req, res) => {
     res.redirect('/'); // (Redirect) Tự động chuyển hướng
 }
 
+const getEditPage = async (req, res) => {
+    const userId = req.params.id;       // Lấy id từ URL, VD: /edit/5 -> id = 5
+    const user = await getUser(userId); // Gọi Service lấy thông tin user theo id
+    if (!user) {
+        return res.status(404).send('Không tìm thấy người dùng!');
+    }
+    return res.render('edit.ejs', { user: user }); // Render form, đổ dữ liệu user vào
+}
+
+const postEditUser = async (req, res) => {
+    let { id, email, name, city } = req.body; // Lấy dữ liệu từ form gửi lên
+    await updateUserById(email, name, city, id); // Gọi Service để UPDATE trong DB
+    return res.redirect('/'); // Sửa xong quay về trang chủ
+}
+
+
 
 // Giống với require của PHP - Nhưng phải chủ động cấu hình (khai báo)
 module.exports = {
-    getHomePage, getNgTrQuMinh, getCreatePage, postCreateUser
+    getHomePage,
+    getCreatePage,
+    postCreateUser,
+    getEditPage,
+    postEditUser
 }
